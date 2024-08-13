@@ -22,7 +22,7 @@ const init = () => {
     ];
 
     const disableAllCells = (cells) => {
-        cells.forEach((item) => item.classList.add("disabled"))
+        cells.forEach((item) => item.setAttribute("disabled", "disabled"))
     }
     const calculateWinner = () => {
         const cells = document.querySelectorAll(".cell");
@@ -42,7 +42,8 @@ const init = () => {
     const onCellClick = (event) => {
         const element = event.target;
         element.innerText = players[currPlayer];
-        element.classList.add(players[currPlayer], "disabled");
+        element.classList.add(players[currPlayer])
+        element.setAttribute("disabled", "disabled");
         const gameStatus = document.getElementById("game-status");
         calculateWinner();
         if (winner) {
